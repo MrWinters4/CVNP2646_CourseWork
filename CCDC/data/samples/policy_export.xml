@@ -1,0 +1,81 @@
+<response status="success">
+  <result>
+    <rules>
+      <entry name="Allow_Internal_to_Internet">
+        <from><member>trust</member></from>
+        <to><member>untrust</member></to>
+        <source><member>10.0.0.0/8</member></source>
+        <destination><member>any</member></destination>
+        <service><member>application-default</member></service>
+        <application><member>web-browsing</member><member>ssl</member></application>
+        <action>allow</action>
+        <log-setting>default-logging</log-setting>
+        <log-end>yes</log-end>
+        <disabled>no</disabled>
+        <description>Standard outbound internet access for internal users</description>
+      </entry>
+      <entry name="Permissive_Catchall">
+        <from><member>any</member></from>
+        <to><member>any</member></to>
+        <source><member>any</member></source>
+        <destination><member>any</member></destination>
+        <service><member>any</member></service>
+        <application><member>any</member></application>
+        <action>allow</action>
+        <disabled>no</disabled>
+        <description>TEMP — added during incident, never removed</description>
+      </entry>
+      <entry name="Legacy_Telnet_Mgmt">
+        <from><member>mgmt</member></from>
+        <to><member>internal</member></to>
+        <source><member>192.168.50.10</member></source>
+        <destination><member>192.168.100.0/24</member></destination>
+        <service><member>telnet</member></service>
+        <application><member>telnet</member></application>
+        <action>allow</action>
+        <log-setting>default-logging</log-setting>
+        <log-end>yes</log-end>
+        <disabled>no</disabled>
+        <description>Legacy switch management — should migrate to SSH</description>
+      </entry>
+      <entry name="DB_Server_Access">
+        <from><member>app</member></from>
+        <to><member>db</member></to>
+        <source><member>10.20.0.0/16</member></source>
+        <destination><member>10.30.10.5</member></destination>
+        <service><member>mysql</member></service>
+        <application><member>mysql</member></application>
+        <action>allow</action>
+        <log-end>no</log-end>
+        <disabled>no</disabled>
+        <description>App tier to MySQL — logging intentionally off for performance</description>
+      </entry>
+      <entry name="Old_VPN_Rule">
+        <from><member>vpn</member></from>
+        <to><member>internal</member></to>
+        <source><member>10.99.0.0/24</member></source>
+        <destination><member>10.0.0.0/8</member></destination>
+        <service><member>any</member></service>
+        <application><member>any</member></application>
+        <action>allow</action>
+        <log-setting>default-logging</log-setting>
+        <log-end>yes</log-end>
+        <disabled>yes</disabled>
+        <description>Decommissioned partner VPN, kept disabled for reference</description>
+      </entry>
+      <entry name="Default_Deny">
+        <from><member>any</member></from>
+        <to><member>any</member></to>
+        <source><member>any</member></source>
+        <destination><member>any</member></destination>
+        <service><member>any</member></service>
+        <application><member>any</member></application>
+        <action>deny</action>
+        <log-setting>default-logging</log-setting>
+        <log-end>yes</log-end>
+        <disabled>no</disabled>
+        <description>Final cleanup deny rule</description>
+      </entry>
+    </rules>
+  </result>
+</response>

@@ -1,0 +1,19 @@
+{
+  "audit_name": "Q2 2026 External Audit Prep",
+  "auditor": "ACME Compliance LLC",
+  "target": {
+    "name": "edge-fw-01",
+    "mode": "live",
+    "host": "192.0.2.1",
+    "api_key_env": "PALO_API_KEY",
+    "verify_tls": false,
+    "timeout_seconds": 30
+  },
+  "audit_rules": {
+    "flag_any_any_allow": true,
+    "flag_missing_logging": true,
+    "flag_disabled_rules": true,
+    "risky_services": ["telnet", "ftp", "rsh", "tftp", "snmp"],
+    "trusted_zones": ["trust", "internal", "dmz"]
+  }
+}

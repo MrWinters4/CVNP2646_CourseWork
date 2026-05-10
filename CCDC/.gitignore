@@ -1,0 +1,26 @@
+# Reports and logs — these are runtime output, not code
+reports/
+*.log
+
+# Don't commit any local credential files
+.env
+*.env
+secrets.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+
+# Editors
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Virtual environments
+venv/
+.venv/
+env/

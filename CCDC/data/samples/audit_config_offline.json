@@ -1,0 +1,16 @@
+{
+  "audit_name": "Sample Offline Audit",
+  "auditor": "CCDC Team",
+  "target": {
+    "name": "lab-fw-01",
+    "mode": "file",
+    "config_file": "data/samples/policy_export.xml"
+  },
+  "audit_rules": {
+    "flag_any_any_allow": true,
+    "flag_missing_logging": true,
+    "flag_disabled_rules": true,
+    "risky_services": ["telnet", "ftp", "rsh", "tftp", "snmp"],
+    "trusted_zones": ["trust", "internal", "dmz"]
+  }
+}
